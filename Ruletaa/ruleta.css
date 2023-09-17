@@ -1,0 +1,238 @@
+/* ruleta.css */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fredoka:wght@600&family=Lobster&family=Poppins:ital,wght@1,500&display=swap');
+
+
+
+body {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url(https://images.unsplash.com/photo-1629197520635-16570fbd0bb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGV4dHVyYSUyMHZlcmRlfGVufDB8fDB8fHww&w=1000&q=80);
+}
+
+header{
+    background-image: url(https://static.vecteezy.com/system/resources/previews/002/368/698/non_2x/abstract-dark-black-textured-panoramic-background-vector.jpg);
+    padding: 0;
+    border: 1px;
+}
+
+.cont{
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    /*min-height: 100vh;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background-color: rgb(20, 20, 20);*/
+}
+
+.neon{
+    text-transform: uppercase;
+    font-size: 5rem;
+    cursor: pointer;
+    transition: .3s linear;
+    color: transparent;
+    -webkit-text-stroke: 2px #D4AF37;
+    background-image: linear-gradient(to left, #D4AF37, #D4AF37, white, rgb(35,31,31));
+    background-size: text;
+    -webkit-background-clip: text;
+    animation: move 30s linear infinite;
+}
+
+@keyframes move{
+    100%{
+        background-position: 2000px 0;
+    }
+}
+
+.neon:hover{
+    color: #D4AF37;
+    text-shadow: 0 0 10px #D4AF37,
+    0 0 20px #D4AF37,
+    0 0 40px #D4AF37,
+    0 0 80px #D4AF37,
+    0 0 160px #D4AF37,
+    0 0 320px #D4AF37;
+}
+
+.roulette-wheel {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    position: relative;
+    background-image: url(https://img.pikbest.com/backgrounds/20191024/old-wood-plank-background-image_2845696.jpg!w700wp);
+    border: rgb(0, 0, 0) 19px solid;
+    animation: spin1 100s linear infinite;
+}
+
+@keyframes spin1 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg); /* Una vuelta completa */
+    }
+}
+
+.number {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    transform-origin: center;
+ 
+}
+
+.number:nth-child(odd) {
+    background-color: #f00;
+    background-image: url(https://static.vecteezy.com/system/resources/thumbnails/015/643/184/small/red-gradient-background-with-abstract-blank-soft-and-smooth-texture-vector.jpg);
+    color: #fff;
+}
+
+.number:nth-child(even) {
+    background-color: #000;
+    color: #ffffff;
+}
+
+.number:nth-child(2) { /* Cambia a :nth-child(1) para seleccionar el número 0 */
+    background-color: green;
+    background-image: url();
+    color: #fff;
+}
+
+.container {
+    position: absolute; /* Cambia la posición a absoluta */
+    top: 50%; /* Centra verticalmente en relación con el body */
+    left: 50%; /* Centra horizontalmente en relación con el body */
+    transform: translate(-50%, -50%); /* Centra el elemento en sí mismo */
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1; /* Valor alto para que aparezca en frente */
+}
+
+.roulette-container {
+    position: fixed;
+    /* ... Tus estilos anteriores ... */
+    z-index: 0; /* Valor más bajo para que esté detrás de la bola */
+    padding: 30px;
+}
+
+.ball {
+    width: 11.5px;
+    height: 11.5px;
+    background-color: rgb(0, 217, 255);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*transform: translate(-50%, -50%);*/
+    transform-style: preserve-3d;
+    animation: spin2 50s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+    animation-play-state: paused;
+    z-index: 2; /* Valor más alto para que aparezca en frente de .container */
+}
+@keyframes spin2 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(140px);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-2160deg) translateX(140px);
+    }
+}
+
+.Deposito {
+    display:flex;
+    position: fixed;
+    padding-left: 25%;
+    padding-top: 125px;
+    /*flex-direction: row; 
+    align-items: center;*/
+    /*left: 7.5rem;*/
+    /*margin: 0 auto;*/
+    
+  
+}
+
+.button-column {
+    display: flex;
+    flex-direction: column; /* Los botones se colocarán en columna */
+    align-items: center; /* Centra los botones verticalmente en la columna */
+    margin-right: 1px; /* Espacio entre las columnas */
+}
+
+.diagonal-button {
+    display: flex;
+    align-items: center; 
+    margin-left: 0; /* Espacio entre las columnas */
+
+}
+
+.rounded-button {
+    width: 180px;
+    height: 50px;
+    transform: rotate(-90deg); /* Rota el botón diagonal 90 grados */
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcDevAvknT8kBq3pB6Xh7wFtaniN6duUuuaw&usqp=CAU);
+    position: relative;
+    left: 60px;
+    border-radius: 10em 10em 0 0;
+}
+
+
+/* Aplicar colores a las clases específicas */
+.rojo {
+    background-image: url(https://media.istockphoto.com/id/614018428/es/foto/fondo-de-navidad-rojo.jpg?s=612x612&w=0&k=20&c=VVGBv8vkE56wMZtnRl0lIltT2qwgTJLSeRhc1wHLzjU=);
+}
+
+.negro {
+    background-color: black;
+}
+ /* Estilo normal de los botones rojos */
+.grid-button.rojo {
+    width: 60px;
+    height: 60px;
+    margin: 1px;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 20px;
+    cursor: pointer;
+ 
+}
+
+
+.grid-button.rojo:hover {
+    background-image: url(https://images.unsplash.com/photo-1568535904307-f48b760a39f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGV4dHVyYSUyMHJvamF8ZW58MHx8MHx8fDA%3D&w=1000&q=80); /*  opacidad al pasar el cursor */
+
+}
+
+
+.grid-button.negro {
+    width: 60px;
+    height: 60px;
+    margin: 1px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 6px; 
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+   
+}
+
+
+.grid-button.negro:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* Negro con opacidad al pasar el cursor */
+}
+ /* fin tabla botones */
+
+
+

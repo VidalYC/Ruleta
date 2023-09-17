@@ -1,0 +1,170 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta Europea</title>
+    <link rel="stylesheet" type="text/css" href="ruleta.css">
+    <link rel="stylesheet" href="roulette-animation.js">
+</head>
+
+<body>
+    
+    <header>
+        <div class="cont">
+            <h1 class="neon">Roulette European</h1>
+        </div>
+    </header>
+ 
+    <div class="roulette-container">
+        <div class="roulette-wheel" id="wheel"><div class="container">
+            <div class="ball" id="ball"></div>
+        </div></div>
+    </div>
+    
+
+    <div>
+        <audio id="music">
+            <source src="casino.mp3">
+        </audio>
+    </div>
+
+
+    <script>
+        window.addEventListener('click', () => {
+            document.getElementById("music").play();
+        });
+    </script>
+    
+    <script>  
+        function launchBall() {
+            const ball = document.getElementById('ball');
+            ball.style.animationPlayState = 'running';
+            ball.style.opacity = '1'; // Mostrar la bola
+            //ball.style.animationDelay = '100s';
+            setTimeout(() => {
+                ball.style.animationPlayState = 'paused';
+                setTimeout(() => {
+                    ball.style.opacity = '0'; // Ocultar la bola después de la animación
+                }, 5000); // Ocultar la bola después de 5 segundos
+                setTimeout(launchBall, 5000); // Lanzar cada 30 segundos
+            }, 6000); // Esperar 6 segundos antes de detener la animación
+        }
+
+        // Iniciar el lanzamiento de la bola al cargar la página
+        window.onload = () => {
+            setTimeout(launchBall, 5000); // Lanzar la primera vez después de 30 segundos
+        };
+    </script>
+
+   
+    <script>
+        const wheel = document.getElementById("wheel");
+        const totalNumbers = 37;
+        const radius = 150; 
+        const centerX = 150;
+        const centerY = 150;
+        const angleIncrement = (2 * Math.PI) / totalNumbers;
+
+      
+
+    for (let i = 0; i < totalNumbers; i++) {
+        const number = document.createElement("div");
+        number.className = "number";
+
+        
+        const europeanNumbers = [
+            0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 
+            6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 
+            24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 
+            29, 7, 28, 12, 35, 3, 26
+        ];
+
+        number.innerText = europeanNumbers[i];
+
+        const angle = i * angleIncrement;
+        const x = centerX + radius * Math.cos(angle) - 15; 
+        const y = centerY + radius * Math.sin(angle) - 15; 
+        number.style.transform = `translate(${x}px, ${y}px) rotate(${90 + (i * (360 / totalNumbers))}deg)`;
+
+        if (i % 2 === 0) {
+            number.classList.add("even-number");
+        } else {
+            number.classList.add("odd-number");
+        }
+
+        wheel.appendChild(number);
+    }
+
+
+    </script>
+    <div class="Deposito">
+        <div class="diagonal-button">
+            <button class="rounded-button">0</button>
+        </div>
+        <div class="button-column">
+            <button class="grid-button rojo">3</button>
+            <button class="grid-button negro"> 2</button>
+            <button class="grid-button rojo">1</button>
+        </div>
+        <div class="button-column">
+            <button class="grid-button negro">6</button>
+            <button class="grid-button rojo"> 5</button>
+            <button class="grid-button negro">4</button>
+        </div>
+        <div class="button-column">
+            <button class="grid-button rojo">9</button>
+            <button class="grid-button negro">8</button>
+            <button class="grid-button rojo">7</button>
+        </div>
+        <div class="button-column">
+            <button class="grid-button  rojo">12</button>
+            <button class="grid-button  negro">11</button>
+            <button class="grid-button  negro ">10</button>
+        </div>
+        <div class="button-column">
+            <button class="grid-button  negro">15</button>
+            <button class="grid-button  rojo">14</button>
+            <button class="grid-button negro">13</button>
+        </div>
+        
+        <div class="button-column">
+            <button class="grid-button rojo">18</button>
+            <button class="grid-button negro">17</button>
+            <button class="grid-button rojo">16</button>
+        </div>
+        <div class="button-column">
+            <button class=" grid-button rojo">21</button>
+            <button class="grid-button negro">20</button>
+            <button class=" grid-button rojo">19</button>
+        </div>
+        <div class="button-column">
+            <button class="grid-button negro">24</button>
+            <button class=" grid-button rojo">23</button>
+            <button class=" grid-button negro">22</button>
+        </div>
+        <div class="button-column">
+            <button class=" grid-button rojo">27</button>
+            <button class=" grid-button negro">26</button>
+            <button class=" grid-button rojo">25</button>
+        </div>
+        
+        <div class="button-column">
+            <button class=" grid-button rojo">30</button>
+            <button class=" grid-button negro">29</button>
+            <button class=" grid-button negro">28</button>
+        </div>
+        <div class="button-column">
+            <button class="grid-button negro">33</button>
+            <button class=" grid-button rojo">32</button>
+            <button class=" grid-button negro">31</button>
+        </div>
+        <div class="button-column">
+            <button class=" grid-button rojo">36</button>
+            <button class=" grid-button negro">35</button>
+            <button class="grid-button rojo">34</button>
+        </div>
+    </div>
+
+</body>
+</html>
